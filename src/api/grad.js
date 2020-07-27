@@ -11,3 +11,11 @@ export const createGrad = person => {
     }
   })
 }
+
+// Index grads (GET)
+export const getGrads = () => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/grads'
+  })
+}

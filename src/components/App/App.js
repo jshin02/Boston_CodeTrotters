@@ -10,6 +10,8 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Groups from '../Home/Groups'
 import Grads from '../Grads/Grads'
+import GradCard from '../Grads/GradCard'
+import GradShow from '../Grads/GradShow'
 
 class App extends Component {
   constructor () {
@@ -56,8 +58,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <Route user={user} path='/gradIndex' component={GradCard} />
           <Route user={user} exact path='/' component={Groups} />
-          <Route user={user} path='/Grads' component={Grads} />
+          <Route user={user} exact path='/Grads' component={Grads} />
+          <Route user={user} path='/grads/:name' component={GradShow} />
         </main>
       </Fragment>
     )
