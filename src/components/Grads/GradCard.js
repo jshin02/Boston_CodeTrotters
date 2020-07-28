@@ -29,6 +29,7 @@ const GradCard = () => {
             interests={grad.interests}
             imageUrl={grad.imageUrl}
             linkedin={grad.linkedin}
+            github={grad.github}
             instagram={grad.instagram}
             email={grad.email}
             id={grad._id}

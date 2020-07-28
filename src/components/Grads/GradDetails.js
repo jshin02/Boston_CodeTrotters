@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 const GradDetails = props => {
-  const { name, identity, compliment, interests, imageUrl, linkedin, instagram, email, id } = props
+  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id } = props
   const containerStyle = {
     border: '1px solid black',
     display: 'flex',
@@ -23,11 +23,11 @@ const GradDetails = props => {
       interests: interests,
       imageUrl: imageUrl,
       linkedin: linkedin,
+      github: github,
       instagram: instagram,
       email: email,
       id: id
     })
-    console.log(id)
   }
   return (
     <Col md={4} style={containerStyle}>
@@ -36,7 +36,6 @@ const GradDetails = props => {
       <h5>Identity: {identity}</h5>
       <h5>Ideal Compliment: {compliment}</h5>
       <h6>Interests: {interests}</h6>
-      <button onClick={listDetails} data-id={id}>Person Details</button>
     </Col>
   )
 }

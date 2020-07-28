@@ -9,6 +9,7 @@ const Grads = () => {
     compliment: '',
     interests: '',
     linkedin: '',
+    github: '',
     instagram: '',
     email: ''
   })

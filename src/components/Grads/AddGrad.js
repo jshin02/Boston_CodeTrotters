@@ -45,16 +45,25 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
         <Form.Label>LinkedIn</Form.Label>
         <Form.Control
           type="text"
-          placeholder="optional"
+          placeholder="optional - Ex: https://www.linkedin.com/username"
           name="linkedin"
           value={person.linkedin}
+          onChange={handleChange} />
+      </Form.Group>
+      <Form.Group controlId="socialGithub">
+        <Form.Label>Github</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="optional - Ex: https://www.github.com/username"
+          name="github"
+          value={person.github}
           onChange={handleChange} />
       </Form.Group>
       <Form.Group controlId="socialInstagram">
         <Form.Label>Instagram</Form.Label>
         <Form.Control
           type="text"
-          placeholder="optional"
+          placeholder="optional - Ex: https://www.instagram.com/username"
           name="instagram"
           value={person.instagram}
           onChange={handleChange} />
@@ -63,7 +72,7 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
         <Form.Label>Email</Form.Label>
         <Form.Control
           type="text"
-          placeholder="optional"
+          placeholder="optional - Ex: Bryan.Adebayo@gmail.com"
           name="email"
           value={person.email}
           onChange={handleChange} />
