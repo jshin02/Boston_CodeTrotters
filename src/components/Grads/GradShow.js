@@ -5,7 +5,7 @@ import { AiFillGithub, AiOutlineMail } from 'react-icons/ai'
 import { assignGrad } from '../../api/auth'
 
 const GradShow = props => {
-  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id } = props.location
+  const { name, identity, compliment, interests, content, endorsements, imageUrl, linkedin, github, instagram, email, id } = props.location
   // in personal message section, only reveal Personal message if the title and content exist - only reveal endoresement requests if those have been filled in.
   // const containerStyle = {
   //   border: '1px solid black',
@@ -41,6 +41,10 @@ const GradShow = props => {
           { instagram && <FaInstagram onClick={() => window.open(instagram, '_blank')} style={iconStyle} /> }
           { email && <AiOutlineMail onClick={() => window.open('mailto:' + email, '_blank')} style={iconStyle} /> }
         </div>
+      </div>
+      <div>
+        <p>{content}</p>
+        <p>{endorsements}</p>
       </div>
     </Col>
   )

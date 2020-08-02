@@ -41,6 +41,26 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           value={person.interests}
           onChange={handleChange} />
       </Form.Group>
+      <Form.Group controlId="formPersonalMessage">
+        <Form.Label>Message to CodeTrotters</Form.Label>
+        <Form.Control
+          as="textarea" rows="4"
+          placeholder="optional - Your chance for a personalized message"
+          name="messageContent"
+          value={person.messageContent}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="formEndoresementRequests">
+        <Form.Label>Endorsement Requests</Form.Label>
+        <Form.Control
+          as="textarea" rows="2"
+          placeholder="optional - i.e. JavaScript, React, UI/UX Design, Scrum Master"
+          name="endorsements"
+          value={person.endorsements}
+          onChange={handleChange}
+        />
+      </Form.Group>
       <Form.Group controlId="formImageUrl">
         <Form.Label>Image URL</Form.Label>
         <Form.Control

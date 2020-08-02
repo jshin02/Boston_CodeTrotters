@@ -12,6 +12,8 @@ const Grads = props => {
     interests: '',
     imageUrl: '',
     assignedToUser: null,
+    messageContent: '',
+    endorsements: '',
     linkedin: '',
     github: '',
     instagram: '',

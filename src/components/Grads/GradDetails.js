@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 const GradDetails = props => {
-  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id } = props
+  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id, content, endorsements } = props
   const containerStyle = {
     border: '1px solid black',
     display: 'flex',
@@ -26,7 +26,9 @@ const GradDetails = props => {
       github: github,
       instagram: instagram,
       email: email,
-      id: id
+      id: id,
+      content: content,
+      endorsements: endorsements
     })
   }
   return (

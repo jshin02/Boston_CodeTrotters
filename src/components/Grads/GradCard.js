@@ -40,6 +40,8 @@ const GradCard = props => {
             instagram={grad.instagram}
             email={grad.email}
             id={grad._id}
+            content={grad.messageContent}
+            endorsements={grad.endorsements}
           />
         ))}
       </div>

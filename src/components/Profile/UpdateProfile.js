@@ -11,6 +11,8 @@ const UpdateProfile = (props) => {
     interests: '',
     imageUrl: '',
     assignedToUser: null,
+    messageContent: '',
+    endorsements: '',
     linkedin: '',
     github: '',
     instagram: '',
