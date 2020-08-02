@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { getGrads } from '../../api/grad'
 import GradDetails from './GradDetails'
 
-const GradCard = () => {
+const GradCard = props => {
   const [index, setIndex] = useState([])
 
+  const indexStyle = {
+    display: 'flex',
+    flexFlow: 'row wrap'
+  }
   useEffect(() => {
     getGrads()
       .then(res => {
@@ -13,13 +17,16 @@ const GradCard = () => {
       })
       .catch(() => console.log('error getting index'))
   }, [])
+  useEffect(() => {
+    console.log(props)
+  }, [])
 
   // render grad details per each grad.
   // pass api response as props
   return (
     <div>
       <h2>All grads</h2>
-      <div>
+      <div style={indexStyle}>
         {index.map((grad, i) => (
           <GradDetails
             key={i}

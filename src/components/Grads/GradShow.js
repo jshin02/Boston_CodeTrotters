@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai'
+import { assignGrad } from '../../api/auth'
 
 const GradShow = props => {
   const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id } = props.location
@@ -16,6 +17,11 @@ const GradShow = props => {
   // const test = event => {
   //   console.log('hey')
   // }
+  useEffect(() => {
+    assignGrad(name)
+      .then(res => console.log(res))
+      .catch(() => console.log('this is not working.'))
+  }, [])
   const iconStyle = {
     height: '40px',
     width: '40px'

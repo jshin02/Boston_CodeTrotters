@@ -29,6 +29,29 @@ export const signIn = credentials => {
   })
 }
 
+export const assignGrad = name => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/grad/' + name
+  })
+}
+
+export const updateUserGrad = (user, gradId) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/gradid',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      person: {
+        id: user._id,
+        gradId: gradId
+      }
+    }
+  })
+}
+
 export const signOut = user => {
   return axios({
     url: apiUrl + '/sign-out',

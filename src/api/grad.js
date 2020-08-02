@@ -27,3 +27,13 @@ export const showGrad = id => {
     url: apiUrl + '/grads/' + id
   })
 }
+
+export const updateGrad = (id, person) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/grads/' + id,
+    data: {
+      person: person
+    }
+  })
+}

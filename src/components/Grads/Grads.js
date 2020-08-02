@@ -1,18 +1,34 @@
 import React, { useState } from 'react'
 import AddGrad from './AddGrad'
 import { createGrad } from '../../api/grad'
+import StudentCheck from '../Modals/StudentCheck'
+import SearchProfile from '../Modals/SearchProfile'
 
-const Grads = () => {
+const Grads = props => {
   const [person, setPerson] = useState({
     name: '',
     identity: '',
     compliment: '',
     interests: '',
+    imageUrl: '',
+    assignedToUser: null,
     linkedin: '',
     github: '',
     instagram: '',
     email: ''
   })
+  const [modalShow, setModalShow] = useState(true)
+  const [modalShow2, setModalShow2] = useState(false)
+
+  const notStudent = () => {
+    setModalShow(false)
+  }
+
+  const isStudent = () => {
+    setModalShow(false)
+    setModalShow2(true)
+    console.log(props)
+  }
 
   const handleChange = event => {
     event.persist()
@@ -25,13 +41,15 @@ const Grads = () => {
   const handleSubmit = event => {
     event.preventDefault()
     createGrad(person)
-      .then(res => res.status(201).json(res))
+      // .then(res => res.status(201).json(res))
       .then(() => console.log('created a person'))
       .catch(() => console.log('did not create a person'))
   }
   return (
     <div>
-      <h2>Add person here</h2>
+      <StudentCheck show={modalShow} onClose={notStudent} onHide={isStudent} />
+      <SearchProfile show={modalShow2} location={props.location} user={props.setUser} onHide={() => setModalShow2(false)} />
+      <h2>Create Profile</h2>
       <AddGrad
         person={person}
         handleChange={handleChange}

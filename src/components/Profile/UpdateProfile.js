@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { showGrad } from '../../api/grad'
+import { showGrad, updateGrad } from '../../api/grad'
+import AddGrad from '../Grads/AddGrad'
+import { withRouter } from 'react-router-dom'
 
 const UpdateProfile = (props) => {
   const [person, setPerson] = useState({
@@ -7,40 +9,42 @@ const UpdateProfile = (props) => {
     identity: '',
     compliment: '',
     interests: '',
+    imageUrl: '',
+    assignedToUser: null,
     linkedin: '',
     github: '',
     instagram: '',
     email: ''
   })
   useEffect(() => {
-    showGrad(props.user._id)
+    console.log(props.user)
+    showGrad(props.user.gradId)
       .then(res => {
         console.log(res)
         setPerson(res.data.grad)
       })
       .catch(() => console.log('could not show user'))
-  })
-  // const handleChange = event => {
-  //   event.persist()
-  //   setPerson(() => {
-  //     const updatedField = { [event.target.name]: event.target.value }
-  //     const newInput = Object.assign({}, person, updatedField)
-  //     return newInput
-  //   })
-  // }
-  // const handleSubmit = event => {
-  //   event.preventDefault()
-  //   createGrad(person)
-  //     .then(res => res.status(201).json(res))
-  //     .then(() => console.log('created a person'))
-  //     .catch(() => console.log('did not create a person'))
-  // }
+  }, [])
+  const handleChange = event => {
+    event.persist()
+    setPerson(() => {
+      const updatedField = { [event.target.name]: event.target.value }
+      const newInput = Object.assign({}, person, updatedField)
+      return newInput
+    })
+  }
+  const handleSubmit = event => {
+    event.preventDefault()
+    updateGrad(props.user.gradId, person)
+      .then(() => props.history.push('/gradIndex/'))
+      .catch(() => console.log('did not update user details'))
+  }
   return (
     <div>
       <h2>Update Your Profile</h2>
-      <h3>Updating {person.name}</h3>
+      <AddGrad person={person} handleChange={handleChange} handleSubmit={handleSubmit} />
     </div>
   )
 }
 
-export default UpdateProfile
+export default withRouter(UpdateProfile)

@@ -13,6 +13,7 @@ import Grads from '../Grads/Grads'
 import GradCard from '../Grads/GradCard'
 import GradShow from '../Grads/GradShow'
 import UpdateProfile from '../Profile/UpdateProfile'
+import Test from '../Grads/test'
 
 class App extends Component {
   constructor () {
@@ -60,12 +61,19 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/update-profile' render={() => (
-            <UpdateProfile user={user} />
+            <UpdateProfile user={user} setUser={this.User} />
           )} />
-          <Route user={user} path='/gradIndex' component={GradCard} />
+          <Route user={user} path='/grad' render={() => (
+            <Grads setUser={this.setUser} />
+          )} />
+          <Route user={user} path='/gradIndex' render={() => (
+            <GradCard user={user} />
+          )} />
           <Route user={user} exact path='/' component={Groups} />
-          <Route user={user} exact path='/Grads' component={Grads} />
           <Route user={user} path='/grads/:name' component={GradShow} />
+          <Route user={user} path='/test' render={() => (
+            <Test user={user} />
+          )} />
         </main>
       </Fragment>
     )

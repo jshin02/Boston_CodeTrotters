@@ -41,6 +41,15 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           value={person.interests}
           onChange={handleChange} />
       </Form.Group>
+      <Form.Group controlId="formImageUrl">
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="https://ca.slack-edge.com/5586ed0a137a"
+          name="imageUrl"
+          value={person.imageUrl}
+          onChange={handleChange} />
+      </Form.Group>
       <Form.Group controlId="socialLinkedin">
         <Form.Label>LinkedIn</Form.Label>
         <Form.Control
