@@ -7,10 +7,12 @@ const GradDetails = props => {
   const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id, content, endorsements } = props
   const containerStyle = {
     border: '1px solid black',
+    marginBottom: '10px',
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center'
   }
   const listDetails = event => {
     // event.preventDefault()
@@ -33,7 +35,7 @@ const GradDetails = props => {
   }
   return (
     <Col md={4} style={containerStyle}>
-      <img src={imageUrl} alt={name} style={{ maxWidth: '100%', maxHeight: '100%' }} />
+      <img src={imageUrl} alt={name} style={{ maxWidth: '100%', maxHeight: '50%' }} />
       <Link to={'/grads/' + id} onClick={listDetails} data-id={id}><h3>{name}</h3></Link>
       <h5>Identity: {identity}</h5>
       <h5>Ideal Compliment: {compliment}</h5>
