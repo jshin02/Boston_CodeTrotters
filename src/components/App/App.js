@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
+import Popup from 'reactjs-popup'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import BurgerIcon from '../Header/BurgerIcon'
+import Menu from '../Header/Menu'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
@@ -75,6 +78,15 @@ class App extends Component {
             <Test user={user} />
           )} />
         </main>
+        <Popup
+          modal
+          overlayStyle={{ background: 'rgba(255, 255, 255, .9)' }}
+          contentStyle={{ background: 'rgba(50, 200, 255)', width: '80%', border: '1px solid blue' }}
+          closeOnDocumentClick={false}
+          trigger={open => <BurgerIcon open={open} />}
+        >
+          {close => <Menu close={close} user={user} />}
+        </Popup>
       </Fragment>
     )
   }
