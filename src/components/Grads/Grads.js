@@ -12,6 +12,7 @@ const Grads = props => {
     interests: '',
     imageUrl: '',
     assignedToUser: null,
+    adviceContent: '',
     messageContent: '',
     endorsements: '',
     linkedin: '',

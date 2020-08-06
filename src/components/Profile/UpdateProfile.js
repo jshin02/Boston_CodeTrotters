@@ -11,6 +11,7 @@ const UpdateProfile = (props) => {
     interests: '',
     imageUrl: '',
     assignedToUser: null,
+    adviceContent: '',
     messageContent: '',
     endorsements: '',
     linkedin: '',
@@ -38,7 +39,7 @@ const UpdateProfile = (props) => {
   const handleSubmit = event => {
     event.preventDefault()
     updateGrad(props.user.gradId, person)
-      .then(() => props.history.push('/gradIndex/'))
+      .then(() => props.history.push('/CodeTrottersIndex'))
       .catch(() => console.log('did not update user details'))
   }
   return (

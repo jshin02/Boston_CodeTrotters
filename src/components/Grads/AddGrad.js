@@ -51,6 +51,16 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           onChange={handleChange}
         />
       </Form.Group>
+      <Form.Group controlId="formAdvice">
+        <Form.Label>Advice for jr. developers</Form.Label>
+        <Form.Control
+          as="textarea" rows="4"
+          placeholder="optional - Any advice for the up and comers?"
+          name="adviceContent"
+          value={person.adviceContent}
+          onChange={handleChange}
+        />
+      </Form.Group>
       <Form.Group controlId="formEndoresementRequests">
         <Form.Label>Endorsement Requests</Form.Label>
         <Form.Control

@@ -66,7 +66,7 @@ class App extends Component {
           <Route user={user} path='/grad' render={() => (
             <Grads setUser={this.setUser} />
           )} />
-          <Route user={user} path='/gradIndex' render={() => (
+          <Route user={user} path='/CodeTrottersIndex' render={() => (
             <GradCard user={user} />
           )} />
           <Route user={user} exact path='/' component={Groups} />

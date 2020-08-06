@@ -12,7 +12,18 @@ const GradCard = props => {
   useEffect(() => {
     getGrads()
       .then(res => {
-        console.log(res)
+        // console.log(res)
+        res.data.grads.sort((a, b) => {
+          const nameA = a.name
+          const nameB = b.name
+          if (nameA < nameB) {
+            return -1
+          }
+          if (nameA > nameB) {
+            return 1
+          }
+          return 0
+        })
         setIndex(res.data.grads)
       })
       .catch(() => console.log('error getting index'))
@@ -40,6 +51,7 @@ const GradCard = props => {
             instagram={grad.instagram}
             email={grad.email}
             id={grad._id}
+            advice={grad.adviceContent}
             content={grad.messageContent}
             endorsements={grad.endorsements}
           />

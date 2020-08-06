@@ -14,8 +14,8 @@ const groups = [
   },
   {
     id: 3,
-    name: 'Grads',
-    path: '/gradIndex'
+    name: 'CodeTrotters',
+    path: '/CodeTrottersIndex'
   }]
 
 const Groups = () => {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 const GradDetails = props => {
-  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id, content, endorsements } = props
+  const { name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id, advice, content, endorsements } = props
   const containerStyle = {
     border: '1px solid black',
     marginBottom: '10px',
@@ -29,13 +29,16 @@ const GradDetails = props => {
       instagram: instagram,
       email: email,
       id: id,
+      advice: advice,
       content: content,
       endorsements: endorsements
     })
   }
   return (
     <Col md={4} style={containerStyle}>
-      <img src={imageUrl} alt={name} style={{ maxWidth: '100%', maxHeight: '50%' }} />
+      <div style={{ border: '1px solid black', maxWidth: '100%', maxHeight: '50%' }}>
+        <img src={imageUrl} alt={name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'cover' }} />
+      </div>
       <Link to={'/grads/' + id} onClick={listDetails} data-id={id}><h3>{name}</h3></Link>
       <h5>Identity: {identity}</h5>
       <h5>Ideal Compliment: {compliment}</h5>
