@@ -15,6 +15,7 @@ import Groups from '../Home/Groups'
 import Grads from '../Grads/Grads'
 import GradCard from '../Grads/GradCard'
 import GradShow from '../Grads/GradShow'
+import ManageSongs from '../Songs/ManageSongs'
 import UpdateProfile from '../Profile/UpdateProfile'
 import Test from '../Grads/test'
 
@@ -71,6 +72,9 @@ class App extends Component {
           )} />
           <Route user={user} path='/CodeTrottersIndex' render={() => (
             <GradCard user={user} />
+          )} />
+          <Route user={user} path='/ManageSongs' render={() => (
+            <ManageSongs user={user} />
           )} />
           <Route user={user} exact path='/' component={Groups} />
           <Route user={user} path='/grads/:name' component={GradShow} />

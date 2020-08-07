@@ -20,8 +20,8 @@ export const getGrads = () => {
   })
 }
 
+// using gradId
 export const showGrad = id => {
-  console.log(id)
   return axios({
     method: 'GET',
     url: apiUrl + '/grads/' + id
