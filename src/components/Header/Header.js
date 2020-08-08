@@ -22,7 +22,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar fixed="top" className="navbar" bg="primary" variant="dark" expand="md">
     <Navbar.Brand href="#">
       Boston CodeTrotters 2020
     </Navbar.Brand>

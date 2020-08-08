@@ -1,6 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
-//**** NavButton StyleSheet
+/* Global StyleSheet */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+//**** NavButton StyleSheet ****
 .burger-menu,
 .burger-menu.open {
   display: inline-block;
@@ -52,13 +58,31 @@
   top: 0px;
   font-size: 24px;
   padding: 0px;
+  list-style-type: none;
 }
 .menu li {
-  list-style: outside none none;
+  // list-style: outside none none;
   margin: 10px 0px;
   padding: 0;
   cursor: pointer;
 }
 .menu li:hover {
   color: #ff0000;
+}
+
+/* Main StyleSheet */
+main {
+  padding: 3.5rem 0;
+  // padding-bottom: 2.5rem;
+}
+
+/* Footer Stylesheet */
+.footer {
+  background-color: #E0E0E0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 5;
 }

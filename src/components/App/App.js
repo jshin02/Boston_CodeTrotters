@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Popup from 'reactjs-popup'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import BurgerIcon from '../Header/BurgerIcon'
 import Menu from '../Header/Menu'
 import SignUp from '../SignUp/SignUp'
@@ -41,7 +42,7 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <Fragment>
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
         <Header user={user} />
         {msgAlerts.map((msgAlert, index) => (
           <AutoDismissAlert
@@ -67,14 +68,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/update-profile' render={() => (
             <UpdateProfile user={user} setUser={this.User} />
           )} />
+          <AuthenticatedRoute user={user} path='/ManageSongs' render={() => (
+            <ManageSongs user={user} />
+          )} />
           <Route user={user} path='/grad' render={() => (
             <Grads setUser={this.setUser} />
           )} />
           <Route user={user} path='/CodeTrottersIndex' render={() => (
             <GradCard user={user} />
-          )} />
-          <Route user={user} path='/ManageSongs' render={() => (
-            <ManageSongs user={user} />
           )} />
           <Route user={user} exact path='/' component={Groups} />
           <Route user={user} path='/grads/:name' component={GradShow} />
@@ -84,14 +85,15 @@ class App extends Component {
         </main>
         <Popup
           modal
-          overlayStyle={{ background: 'rgba(255, 255, 255, .9)' }}
-          contentStyle={{ background: 'rgba(50, 200, 255)', width: '80%', border: '1px solid blue' }}
+          overlayStyle={{ background: 'rgba(255, 255, 255, .95)' }}
+          contentStyle={{ background: 'rgba(255, 255, 255)', width: '40%', border: '1px solid black' }}
           closeOnDocumentClick={false}
           trigger={open => <BurgerIcon open={open} />}
         >
           {close => <Menu close={close} user={user} />}
         </Popup>
-      </Fragment>
+        <Footer />
+      </div>
     )
   }
 }

@@ -29,12 +29,17 @@ const UpdateProfile = (props) => {
       .catch(() => console.log('could not show user'))
   }, [])
   const handleChange = event => {
-    event.persist()
-    setPerson(() => {
-      const updatedField = { [event.target.name]: event.target.value }
-      const newInput = Object.assign({}, person, updatedField)
-      return newInput
-    })
+    // event.persist()
+    // setPerson(() => {
+    //   const updatedField = { [event.target.name]: event.target.value }
+    //   const newInput = Object.assign({}, person, updatedField)
+    //   console.log(newInput)
+    //   return newInput
+    // })
+    // const updatedField = { [event.target.name]: event.target.value }
+    // const newInput = Object.assign({}, person, updatedField)
+    // setPerson(newInput)
+    setPerson({ ...person, [event.target.name]: event.target.value })
   }
   const handleSubmit = event => {
     event.preventDefault()

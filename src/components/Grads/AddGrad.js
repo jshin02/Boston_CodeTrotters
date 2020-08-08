@@ -8,6 +8,7 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
       <Form.Group controlId="addGradName">
         <Form.Label>Name</Form.Label>
         <Form.Control
+          required
           type="text"
           placeholder="Name"
           name="name"
@@ -17,6 +18,7 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
       <Form.Group controlId="formGradNature">
         <Form.Label>Identity</Form.Label>
         <Form.Control
+          required
           type="text"
           placeholder="Identity"
           name="identity"
@@ -26,6 +28,7 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
       <Form.Group controlId="formGradCompliment">
         <Form.Label>Ideal Compliment</Form.Label>
         <Form.Control
+          required
           type="text"
           placeholder="Ideal Compliment"
           name="compliment"
@@ -35,10 +38,21 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
       <Form.Group controlId="formGradInterests">
         <Form.Label>Interests</Form.Label>
         <Form.Control
+          required
           type="text"
           placeholder="i.e. Basketball, DJ-ing, Reading"
           name="interests"
           value={person.interests}
+          onChange={handleChange} />
+      </Form.Group>
+      <Form.Group controlId="formImageUrl">
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control
+          required
+          type="text"
+          placeholder="https://ca.slack-edge.com/5586ed0a137a"
+          name="imageUrl"
+          value={person.imageUrl}
           onChange={handleChange} />
       </Form.Group>
       <Form.Group controlId="formPersonalMessage">
@@ -70,15 +84,6 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           value={person.endorsements}
           onChange={handleChange}
         />
-      </Form.Group>
-      <Form.Group controlId="formImageUrl">
-        <Form.Label>Image URL</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="https://ca.slack-edge.com/5586ed0a137a"
-          name="imageUrl"
-          value={person.imageUrl}
-          onChange={handleChange} />
       </Form.Group>
       <Form.Group controlId="socialLinkedin">
         <Form.Label>LinkedIn</Form.Label>

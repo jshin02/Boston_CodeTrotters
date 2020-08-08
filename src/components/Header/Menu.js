@@ -13,18 +13,19 @@ const AuthenticatedOptions = ({ close }) => (
       <li>
         <NavLink onClick={close} activeClassName='current' to="change-password">Change Password</NavLink>
       </li>
-      <li>
-        <NavLink onClick={close} activeClassName='current' to="sign-out">Sign Out</NavLink>
-      </li>
     </ul>
   </div>
 )
 
 const Menu = ({ close, user }) => (
   <Fragment>
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <NavLink onClick={close} activeClassName='current' to="/">Home</NavLink>
-      {user && <AuthenticatedOptions close={close} />}
+    <div className="menu" style={{ display: 'flex', flexDirection: 'column' }}>
+      <ul>
+        <li>
+          <NavLink onClick={close} activeClassName='current' to="/">Home</NavLink>
+          {user && <AuthenticatedOptions close={close} />}
+        </li>
+      </ul>
     </div>
   </Fragment>
 )
