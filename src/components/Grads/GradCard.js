@@ -7,7 +7,10 @@ const GradCard = props => {
 
   const indexStyle = {
     display: 'flex',
-    flexFlow: 'row wrap'
+    maxWidth: '1140px',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: '36vh'
   }
   useEffect(() => {
     getGrads()
@@ -36,11 +39,12 @@ const GradCard = props => {
   // pass api response as props
   return (
     <div>
-      <h2>All grads</h2>
+      <h2 style={{ marginTop: '20px' }}>All Codetrotters</h2>
       <div style={indexStyle}>
         {index.map((grad, i) => (
           <GradDetails
             key={i}
+            mod={i}
             name={grad.name}
             identity={grad.identity}
             compliment={grad.compliment}

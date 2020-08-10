@@ -1,40 +1,38 @@
 import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+// import Nav from 'react-bootstrap/Nav'
+// import Navbar from 'react-bootstrap/Navbar'
+import { NavLink } from 'react-router-dom'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <NavLink to="/sign-out" activeClassName='current' className='nav-links'>Sign Out</NavLink>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <NavLink to="/sign-up" activeClassName='current' className='nav-links'>Sign Up</NavLink>
+    <NavLink to="/sign-in" activeClassName='current' className='nav-links'>Sign In</NavLink>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link to="/">Home</Nav.Link>
+    <NavLink exact path to="/" activeClassName='current' className='nav-links'>Home</NavLink>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar fixed="top" className="navbar" bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+  <div className="navbar">
+    <NavLink to="/" className="logo">
       Boston CodeTrotters 2020
-    </Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2">Welcome, {user.name}</span>}
-        { alwaysOptions }
-        { user ? authenticatedOptions : unauthenticatedOptions }
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+    </NavLink>
+    <nav className="#">
+      { user && <span className="navbar-text mr-2">Welcome, {user.name}</span>}
+      { alwaysOptions }
+      { user ? authenticatedOptions : unauthenticatedOptions }
+    </nav>
+  </div>
 )
 
 export default Header

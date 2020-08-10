@@ -43,8 +43,8 @@ const GradShow = props => {
   return (
     <Fragment>
       <Row style={postcardStyle}>
-        <Col md={6} style= {{ border: '1px solid red' }}>
-          <div data-id={id} style={{ border: '1px solid blue', height: '70vh' }}>
+        <Col md={6}>
+          <div data-id={id} style={{ height: '70vh' }}>
             { content &&
             <div>
               <h5>Message to CodeTrotters</h5>
@@ -65,8 +65,8 @@ const GradShow = props => {
             }
           </div>
         </Col>
-        <Col md={6} style={{ border: '1px solid green', height: '70vh' }}>
-          <div data-id={id} style={{ border: '1px solid blue', height: '70vh', display: 'flex', flexDirection: 'column' }}>
+        <Col md={6} style={{ height: '70vh' }}>
+          <div data-id={id} style={{ height: '70vh', display: 'flex', flexDirection: 'column' }}>
             <img src={imageUrl} alt={name} style={{ maxWidth: '60%', height: '300px', alignSelf: 'flex-end', objectFit: 'cover' }} />
             <h3 style={{ alignSelf: 'flex-end' }}>{name}</h3>
             <h6>Identity: {identity}</h6>
