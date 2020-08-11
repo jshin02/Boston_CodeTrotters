@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
 import AddGrad from './AddGrad'
 import { createGrad } from '../../api/grad'
 import StudentCheck from '../Modals/StudentCheck'
@@ -12,18 +13,22 @@ const Grads = props => {
     interests: '',
     organization: '',
     imageUrl: '',
-    assignedToUser: null,
+    assignedToUser: true,
     adviceContent: '',
     messageContent: '',
     endorsements: '',
     linkedin: '',
     github: '',
     instagram: '',
-    email: ''
+    email: '',
+    owner: ''
   })
   const [modalShow, setModalShow] = useState(true)
   const [modalShow2, setModalShow2] = useState(false)
 
+  useEffect(() => {
+    setPerson({ ...person, owner: props.user._id })
+  }, [])
   const notStudent = () => {
     setModalShow(false)
   }
@@ -46,6 +51,7 @@ const Grads = props => {
     event.preventDefault()
     createGrad(person)
       // .then(res => res.status(201).json(res))
+      .then(() => history.push('/'))
       .then(() => console.log('created a person'))
       .catch(() => console.log('did not create a person'))
   }
@@ -62,4 +68,4 @@ const Grads = props => {
   )
 }
 
-export default Grads
+export default withRouter(Grads)

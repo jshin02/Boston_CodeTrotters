@@ -43,6 +43,7 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           name="organization"
           value={person.organization}
           onChange={handleChange}>
+          <option value='disabled'>Select an affiliation</option>
           <option>Instructors</option>
           <option>CodeTrotters</option>
           <option>Other Affiliate</option>

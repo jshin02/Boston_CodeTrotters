@@ -5,7 +5,7 @@ import { showGrad } from '../../api/grad'
 import ShowSongs from '../Songs/ShowSongs'
 import { ShowLeftCard } from './ShowLeftCard'
 import { ShowRightCard } from './ShowRightCard'
-import { useSpring, animated, config } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 const GradShow = props => {
   const [gradSongs, setGradSongs] = useState([])
@@ -29,7 +29,7 @@ const GradShow = props => {
   const fade = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
-    config: config.slow
+    config: { mass: 1, tension: 280, friction: 180 }
   })
   const { name, identity, compliment, interests, imageUrl, adviceContent, messageContent, endorsements, linkedin, github, instagram, email, id } = person
   // in personal message section, only reveal Personal message if the title and content exist - only reveal endoresement requests if those have been filled in.

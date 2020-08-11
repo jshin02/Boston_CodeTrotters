@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSpring, animated } from 'react-spring'
 import Segments from './Segments'
 import { getGrads } from '../../api/grad'
 
@@ -25,7 +26,6 @@ const groups = [
 const Groups = () => {
   const [users, setUsers] = useState([])
   const [userAdvice, setUserAdvice] = useState({})
-
   useEffect(() => {
     getGrads()
       .then(res => setUsers(res.data.grads))
@@ -49,9 +49,13 @@ const Groups = () => {
     }
     console.log(userAdvice)
   }, [users])
-  const containerStyle = {
-    height: '90vh'
-  }
+  const fade = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { mass: 2, tension: 280, friction: 180 },
+    height: '90vh',
+    delay: 300
+  })
   const adviceContainer = {
     height: '30vh',
     position: 'relative',
@@ -76,7 +80,7 @@ const Groups = () => {
     alignItems: 'center'
   }
   return (
-    <div style={containerStyle}>
+    <animated.div style={fade}>
       <div style={adviceContainer}>
         <div style={adviceStyle}>
           <h3>&quot;{userAdvice.adviceContent}&quot;</h3>
@@ -93,7 +97,7 @@ const Groups = () => {
           ))}
         </div>
       </div>
-    </div>
+    </animated.div>
   )
 }
 

@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { useSpring, animated } from 'react-spring'
 import { getGrads } from '../../api/grad'
 import GradDetails from './GradDetails'
 
 const GradCard = props => {
   const [index, setIndex] = useState([])
 
-  const indexStyle = {
-    display: 'flex',
-    maxWidth: '1140px',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginTop: '46vh'
-  }
   useEffect(() => {
     getGrads()
       .then(res => {
@@ -33,11 +27,35 @@ const GradCard = props => {
       .catch(() => console.log('error getting index'))
   }, [])
 
+  const indexStyle = {
+    display: 'flex',
+    maxWidth: '1140px',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: '50vh'
+  }
+  const messageContainer = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { mass: 2, tension: 280, friction: 180 },
+    delay: 300,
+    height: '30vh',
+    position: 'relative',
+    width: '61%',
+    margin: '0 auto'
+  })
+
   // render grad details per each grad.
   // pass api response as props
   return (
     <div>
-      <h2 style={{ marginTop: '20px' }}>Codetrotters</h2>
+      <h2 style={{ margin: '20px 0' }}>Codetrotters</h2>
+      <animated.div style={messageContainer}>
+        <div>
+          <h3>Congratulations!</h3>
+          <h5 style={{ lineHeight: '1.5' }}>It has been an honor to get to enjoy a unique chapter in life with all of you. Below is the list of characters involved - all of who will have their own respective recounts of this time!</h5>
+        </div>
+      </animated.div>
       <div style={indexStyle}>
         {index.map((grad, i) => (
           <GradDetails

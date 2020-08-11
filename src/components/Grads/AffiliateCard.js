@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useSpring, animated } from 'react-spring'
 import { getGrads } from '../../api/grad'
 import GradDetails from './GradDetails'
 
 const AffiliateCard = props => {
   const [index, setIndex] = useState([])
-
-  const indexStyle = {
-    display: 'flex',
-    maxWidth: '1140px',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginTop: '36vh'
-  }
   useEffect(() => {
     getGrads()
       .then(res => {
@@ -33,9 +26,33 @@ const AffiliateCard = props => {
       .catch(() => console.log('error getting index'))
   }, [])
 
+  const indexStyle = {
+    display: 'flex',
+    maxWidth: '1140px',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: '50vh'
+  }
+  const messageContainer = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { mass: 2, tension: 280, friction: 180 },
+    delay: 300,
+    height: '30vh',
+    position: 'relative',
+    width: '61%',
+    margin: '0 auto'
+  })
+
   return (
     <div>
-      <h2 style={{ marginTop: '20px' }}>Affiliates</h2>
+      <h2 style={{ margin: '20px 0' }}>Affiliates</h2>
+      <animated.div style={messageContainer}>
+        <div>
+          <h3>Welcome,</h3>
+          <h5 style={{ lineHeight: '1.5' }}>Thank you for visiting our General Assembly community. Please feel free to be a part of it by signing up and claiming the &quot;affiliate&quot; organization on the sign up form.</h5>
+        </div>
+      </animated.div>
       <div style={indexStyle}>
         { index.length > 0
           ? index.map((grad, i) => (

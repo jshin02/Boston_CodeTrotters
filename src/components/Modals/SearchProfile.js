@@ -12,10 +12,27 @@ const SearchProfile = props => {
     gradId: '',
     assignedToUser: null
   })
+  const [person, setPerson] = useState({
+    name: '',
+    identity: '',
+    compliment: '',
+    interests: '',
+    organization: '',
+    imageUrl: '',
+    assignedToUser: true,
+    adviceContent: '',
+    messageContent: '',
+    endorsements: '',
+    linkedin: '',
+    github: '',
+    instagram: '',
+    email: '',
+    owner: ''
+  })
   const user = props.user
   const setUser = props.userfun
-  const person = props.person
-  const setPerson = props.personfun
+  // const person = props.person
+  // const setPerson = props.personfun
   useEffect(() => {
     // user is assigned a gradId here
     console.log(props.location, setUser)
