@@ -7,11 +7,6 @@ import 'aos/dist/aos.css'
 const GradDetails = props => {
   const { mod, name, identity, compliment, interests, imageUrl, id } = props
   const [theClass, setTheClass] = useState('')
-  const containerStyle = {
-    position: 'relative',
-    width: '320px',
-    marginBottom: '50px'
-  }
 
   useEffect(() => {
     if (mod % 3 === 0) {
@@ -24,11 +19,15 @@ const GradDetails = props => {
       setTheClass('grad-col-3 grad-col')
     }
   })
-
   useEffect(() => {
     Aos.init()
   }, [])
 
+  const containerStyle = {
+    position: 'relative',
+    width: '320px',
+    marginBottom: '50px'
+  }
   return (
     <div style={containerStyle} className={theClass} data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
       <div style={{ border: '1px solid rgba(190,199,192,.4)', width: '100%', height: '470px', position: 'relative' }}>

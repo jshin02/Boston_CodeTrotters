@@ -31,7 +31,7 @@ const GradCard = props => {
     display: 'flex',
     maxWidth: '1140px',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     marginTop: '50vh'
   }
   const messageContainer = useSpring({
@@ -48,7 +48,7 @@ const GradCard = props => {
   // render grad details per each grad.
   // pass api response as props
   return (
-    <div>
+    <div style={{ border: '1px solid black' }}>
       <h2 style={{ margin: '20px 0' }}>Codetrotters</h2>
       <animated.div style={messageContainer}>
         <div>

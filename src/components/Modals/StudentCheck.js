@@ -15,14 +15,14 @@ const StudentCheck = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h5>Were you a student in the CodeTrotter cohort?</h5>
+        <h5>Were you a student/instructor in the CodeTrotter cohort?</h5>
         <p>
-          If you were a student in the 2020 CodeTrotters Cohort of General Assembly, it is likely your profile has some information in it to help get you going.
+          If you were a student or instructor in the 2020 CodeTrotters Cohort of General Assembly, it is likely your profile has some information in it to help get you started.
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onClose}>No, I was not</Button>
-        <Button onClick={props.onHide}>Yes, I was a student</Button>
+        <Button onClick={props.onHide}>Yes, I was</Button>
       </Modal.Footer>
     </Modal>
   )

@@ -51,7 +51,10 @@ const Grads = props => {
     event.preventDefault()
     createGrad(person)
       // .then(res => res.status(201).json(res))
-      .then(() => history.push('/'))
+      .then(() => {
+        console.log('created person, now trying to push')
+        props.history.push('/')
+      })
       .then(() => console.log('created a person'))
       .catch(() => console.log('did not create a person'))
   }

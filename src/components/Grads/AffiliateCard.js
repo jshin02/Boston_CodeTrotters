@@ -30,7 +30,7 @@ const AffiliateCard = props => {
     display: 'flex',
     maxWidth: '1140px',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     marginTop: '50vh'
   }
   const messageContainer = useSpring({

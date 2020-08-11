@@ -31,8 +31,8 @@ const InstructorCard = props => {
     display: 'flex',
     maxWidth: '1140px',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    marginTop: '46vh'
+    justifyContent: 'flex-start',
+    marginTop: '50vh'
   }
   const messageContainer = useSpring({
     from: { opacity: 0 },
