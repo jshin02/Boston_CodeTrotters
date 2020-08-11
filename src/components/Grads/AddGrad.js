@@ -35,6 +35,19 @@ const AddGrad = ({ person, handleChange, handleSubmit }) => {
           value={person.compliment}
           onChange={handleChange} />
       </Form.Group>
+      <Form.Group controlId="formGradOrg">
+        <Form.Label>Organization</Form.Label>
+        <Form.Control
+          required
+          as="select"
+          name="organization"
+          value={person.organization}
+          onChange={handleChange}>
+          <option>Instructors</option>
+          <option>CodeTrotters</option>
+          <option>Other Affiliate</option>
+        </Form.Control>
+      </Form.Group>
       <Form.Group controlId="formGradInterests">
         <Form.Label>Interests</Form.Label>
         <Form.Control

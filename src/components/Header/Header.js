@@ -25,7 +25,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <div className="navbar">
     <NavLink to="/" className="logo">
-      Boston CodeTrotters 2020
+      CodeTrotters 2020
     </NavLink>
     <nav className="#">
       { user && <span className="navbar-text mr-2">Welcome, {user.name}</span>}

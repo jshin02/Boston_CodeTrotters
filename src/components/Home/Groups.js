@@ -6,12 +6,12 @@ const groups = [
   {
     id: 1,
     name: 'Instructors',
-    path: '/Instructors'
+    path: '/InstructorsIndex'
   },
   {
     id: 2,
-    name: 'Students',
-    path: '/Students'
+    name: 'Affiliates',
+    path: '/AffiliatesIndex'
   },
   {
     id: 3,

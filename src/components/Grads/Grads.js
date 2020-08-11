@@ -10,6 +10,7 @@ const Grads = props => {
     identity: '',
     compliment: '',
     interests: '',
+    organization: '',
     imageUrl: '',
     assignedToUser: null,
     adviceContent: '',

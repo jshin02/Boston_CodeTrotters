@@ -15,7 +15,7 @@ const GradCard = props => {
   useEffect(() => {
     getGrads()
       .then(res => {
-        // console.log(res)
+        console.log(res)
         res.data.grads.sort((a, b) => {
           const nameA = a.name
           const nameB = b.name
@@ -27,19 +27,17 @@ const GradCard = props => {
           }
           return 0
         })
-        setIndex(res.data.grads)
+        const container = res.data.grads.filter(element => element.organization === 'CodeTrotters')
+        setIndex(container)
       })
       .catch(() => console.log('error getting index'))
-  }, [])
-  useEffect(() => {
-    console.log(props)
   }, [])
 
   // render grad details per each grad.
   // pass api response as props
   return (
     <div>
-      <h2 style={{ marginTop: '20px' }}>All Codetrotters</h2>
+      <h2 style={{ marginTop: '20px' }}>Codetrotters</h2>
       <div style={indexStyle}>
         {index.map((grad, i) => (
           <GradDetails
@@ -48,6 +46,7 @@ const GradCard = props => {
             name={grad.name}
             identity={grad.identity}
             compliment={grad.compliment}
+            organization={grad.organization}
             interests={grad.interests}
             imageUrl={grad.imageUrl}
             linkedin={grad.linkedin}

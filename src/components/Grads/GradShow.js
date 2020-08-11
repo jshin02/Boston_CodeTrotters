@@ -1,24 +1,31 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
-import { AiFillGithub, AiOutlineMail } from 'react-icons/ai'
 import { showGrad } from '../../api/grad'
 import ShowSongs from '../Songs/ShowSongs'
+import { ShowLeftCard } from './ShowLeftCard'
+import { ShowRightCard } from './ShowRightCard'
+import { useSpring, animated, config } from 'react-spring'
 
 const GradShow = props => {
   const { name, identity, compliment, interests, content, advice, endorsements, imageUrl, linkedin, github, instagram, email, id } = props.location
   const [gradSongs, setGradSongs] = useState([])
+  const fade = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: config.slow
+  })
   // in personal message section, only reveal Personal message if the title and content exist - only reveal endoresement requests if those have been filled in.
   const postcardStyle = {
-    border: '1px solid black',
+    border: '1px solid rgba(190,199,192,.8)',
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'center',
     alignItems: 'center',
     height: '70vh',
     width: '100%',
-    margin: '20px auto'
+    margin: '20px auto',
+    padding: '5px 0'
   }
   const playlistStyle = {
     border: '1px solid pink',
@@ -30,6 +37,7 @@ const GradShow = props => {
     margin: '0 auto'
   }
   useEffect(() => {
+    // show request for grad's songs
     showGrad(id)
       .then(res => setGradSongs(res.data.grad.songs))
       .catch(() => console.log('this is not working.'))
@@ -41,50 +49,19 @@ const GradShow = props => {
   }
 
   return (
-    <Fragment>
+    <animated.div style={fade}>
       <Row style={postcardStyle}>
         <Col md={6}>
-          <div data-id={id} style={{ height: '70vh' }}>
-            { content &&
-            <div>
-              <h5>Message to CodeTrotters</h5>
-              <p>{content}</p>
-            </div>
-            }
-            { advice &&
-            <div>
-              <h5>Advice to Jr. Developers</h5>
-              <p>{advice}</p>
-            </div>
-            }
-            { endorsements &&
-            <div>
-              <h5>Endorsement Requests</h5>
-              <p>{endorsements}</p>
-            </div>
-            }
-          </div>
+          <ShowLeftCard content={content} advice={advice} endorsements={endorsements} id={id} />
         </Col>
         <Col md={6} style={{ height: '70vh' }}>
-          <div data-id={id} style={{ height: '70vh', display: 'flex', flexDirection: 'column' }}>
-            <img src={imageUrl} alt={name} style={{ maxWidth: '60%', height: '300px', alignSelf: 'flex-end', objectFit: 'cover' }} />
-            <h3 style={{ alignSelf: 'flex-end' }}>{name}</h3>
-            <h6>Identity: {identity}</h6>
-            <h6>Ideal Compliment: {compliment}</h6>
-            <h6>Interests: {interests}</h6>
-            <div className='social'>
-              { linkedin && <FaLinkedin onClick={() => window.open(linkedin, '_blank')} style={iconStyle} /> }
-              { github && <AiFillGithub onClick={() => window.open(github, '_blank')} style={iconStyle} /> }
-              { instagram && <FaInstagram onClick={() => window.open(instagram, '_blank')} style={iconStyle} /> }
-              { email && <AiOutlineMail onClick={() => window.open('mailto:' + email, '_blank')} style={iconStyle} /> }
-            </div>
-          </div>
+          <ShowRightCard id={id} imageUrl={imageUrl} name={name} identity={identity} compliment={compliment} interests={interests} linkedin={linkedin} github={github} instagram={instagram} email={email} iconStyle={iconStyle} />
         </Col>
       </Row>
       <Row style={playlistStyle}>
         <ShowSongs gradSongs={gradSongs} />
       </Row>
-    </Fragment>
+    </animated.div>
   )
 }
 

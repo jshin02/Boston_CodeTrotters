@@ -5,7 +5,7 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 const GradDetails = props => {
-  const { mod, name, identity, compliment, interests, imageUrl, linkedin, github, instagram, email, id, advice, content, endorsements } = props
+  const { mod, name, identity, compliment, organization, interests, imageUrl, linkedin, github, instagram, email, id, advice, content, endorsements } = props
   const [theClass, setTheClass] = useState('')
   const containerStyle = {
     position: 'relative',
@@ -40,6 +40,7 @@ const GradDetails = props => {
       name: name,
       identity: identity,
       compliment: compliment,
+      organization: organization,
       interests: interests,
       imageUrl: imageUrl,
       linkedin: linkedin,
