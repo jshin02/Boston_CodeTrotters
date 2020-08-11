@@ -39,7 +39,7 @@ const GradShow = props => {
     flexFlow: 'column wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '70vh',
+    height: '540px',
     width: '100%',
     margin: '20px auto',
     padding: '5px 0'
@@ -50,7 +50,9 @@ const GradShow = props => {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    margin: '0 auto'
+    margin: '0 auto',
+    padding: '5px 0',
+    marginBottom: '40px'
   }
   useEffect(() => {
     // show request for grad's songs
@@ -70,10 +72,10 @@ const GradShow = props => {
   return (
     <animated.div style={fade}>
       <Row style={postcardStyle}>
-        <Col md={6}>
+        <Col md={6} style={{ height: 'inherit', marginTop: '7px' }}>
           <ShowLeftCard content={messageContent} advice={adviceContent} endorsements={endorsements} id={id} />
         </Col>
-        <Col md={6} style={{ height: '70vh' }}>
+        <Col md={6} style={{ height: 'inherit', marginTop: '7px' }}>
           <ShowRightCard id={id} imageUrl={imageUrl} name={name} identity={identity} compliment={compliment} interests={interests} linkedin={linkedin} github={github} instagram={instagram} email={email} iconStyle={iconStyle} />
         </Col>
       </Row>
