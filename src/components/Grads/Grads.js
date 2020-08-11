@@ -52,7 +52,7 @@ const Grads = props => {
   return (
     <div>
       <StudentCheck show={modalShow} onClose={notStudent} onHide={isStudent} />
-      <SearchProfile show={modalShow2} location={props.location} user={props.setUser} onHide={() => setModalShow2(false)} />
+      <SearchProfile show={modalShow2} person={person} personfun={setPerson} location={props.location} userfun={props.setUser} user={props.user} onHide={() => setModalShow2(false)} />
       <h2>Create Profile</h2>
       <AddGrad
         person={person}

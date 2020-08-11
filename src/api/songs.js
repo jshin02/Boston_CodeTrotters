@@ -15,10 +15,11 @@ export const addSong = (songs, user) => {
   })
 }
 
-export const updateSong = (id, song) => {
+export const updateSong = (gradId, song, songId) => {
+  console.log('grad id', gradId, 'song', song, 'song id', songId)
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/grads/' + id + '/songs/' + song.id,
+    url: apiUrl + '/grads/' + gradId + '/songs/' + songId,
     data: {
       song: {
         title: song.title,

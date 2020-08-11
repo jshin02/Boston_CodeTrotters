@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Segments = props => {
   const containerStyle = {
@@ -10,9 +10,9 @@ const Segments = props => {
   }
   return (
     <div style={containerStyle}>
-      <Link to={props.path}>
+      <NavLink to={props.path}>
         <Button variant="outline-primary" size="lg">{props.type}</Button>
-      </Link>
+      </NavLink>
     </div>
   )
 }

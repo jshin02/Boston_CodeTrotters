@@ -29,9 +29,10 @@ export const showGrad = id => {
 }
 
 export const updateGrad = (id, person) => {
+  console.log('assigned?', id, person)
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/grads/' + id,
+    url: apiUrl + '/grads/' + person._id,
     data: {
       person: person
     }

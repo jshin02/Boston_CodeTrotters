@@ -3,14 +3,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const AddSongs = ({ newSong, handleChange, handleSubmit }) => {
-  // const songStyle = {
-  //   width: '100%',
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-around',
-  //   alignItems: 'center',
-  //   border: '1px solid blue'
-  // }
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="addSongTitle">

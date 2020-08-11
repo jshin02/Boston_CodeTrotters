@@ -10,7 +10,7 @@ const GradCard = props => {
     maxWidth: '1140px',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: '36vh'
+    marginTop: '46vh'
   }
   useEffect(() => {
     getGrads()

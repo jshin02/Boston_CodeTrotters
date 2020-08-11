@@ -13,19 +13,18 @@ const ShowSongs = props => {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
-    border: '1px solid blue'
+    alignItems: 'center'
   }
   return (
     <Col sm={12}>
       <animated.div style={slide}>
-        <div style={{ border: '1px solid green', width: '100%' }}>
+        <div style={{ border: '1px solid rgba(190,199,192,.8)', width: '100%' }}>
           <h3 style={{ textAlign: 'center' }}>Top Music To Code To</h3>
           <div style={songStyle}>
             {props.gradSongs.map((song, i) => (
-              <div key={i} style={{ border: '1px solid black' }}>
-                <h5>{song.title}</h5>
-                <h6>{song.artist}</h6>
+              <div key={i}>
+                <h5>Title: {song.title}</h5>
+                <h6>Artist(s): {song.artist}</h6>
               </div>
             ))}
           </div>

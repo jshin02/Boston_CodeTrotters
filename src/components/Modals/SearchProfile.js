@@ -12,12 +12,19 @@ const SearchProfile = props => {
     gradId: '',
     assignedToUser: null
   })
-  const setUser = props.user
+  const user = props.user
+  const setUser = props.userfun
+  const person = props.person
+  const setPerson = props.personfun
   useEffect(() => {
     // user is assigned a gradId here
     console.log(props.location, setUser)
     assignGrad(props.location.name)
       .then(res => {
+        console.log(user._id)
+        // populates container to update resource if positive match
+        setPerson({ ...res.data.grad, owner: user._id })
+        // Populates the modal for user/grad verification
         setFetchProfile(prevProfile => {
           const updatedField = {
             name: res.data.grad.name,
@@ -33,27 +40,30 @@ const SearchProfile = props => {
       })
       .catch(() => console.log('failed to execute GET'))
   }, [])
+  // hook to update grad every time the grad's value (person) is changed.
   useEffect(() => {
-    console.log(fetchProfile, props.location.user)
-  }, [fetchProfile])
+    updateGrad(fetchProfile.gradId, person)
+      .then(() => console.log('updated grad'))
+      .catch(() => console.log('failed to update grad'))
+    // console.log(person)
+    // console.log(fetchProfile, props.location.user)
+  }, [person])
 
   const handleSuccess = event => {
     event.preventDefault()
-    const validatedProfile = {
-      assignedToUser: true
-    }
-    // set user's gradId
+    // update person which will update entire document FIX THIS
+    setPerson({ ...person, assignedToUser: true })
+    // update user's gradId using userID pulled from location
     updateUserGrad(props.location.user, fetchProfile.gradId)
       .then(res => {
         const updatedUser = Object.assign({}, props.location.user, { gradId: fetchProfile.gradId })
+        // set user state at app level
+        // this should have its own .then handler
         setUser(updatedUser)
       })
+      .then(() => props.history.push('/'))
       .then(() => console.log('Updated User gradId'))
       .catch(() => console.log('failed to update user with gradId'))
-    // update grad with assignment boolean
-    updateGrad(fetchProfile.gradId, validatedProfile)
-      .then(() => props.history.push('/gradIndex/'))
-      .catch(() => console.log('failed to update Grad assignment status'))
   }
   return (
     <Modal

@@ -76,7 +76,7 @@ class App extends Component {
             <ManageSongs user={user} />
           )} />
           <Route user={user} path='/grad' render={() => (
-            <Grads setUser={this.setUser} />
+            <Grads setUser={this.setUser} user={user} />
           )} />
           <Route user={user} path='/CodeTrottersIndex' render={() => (
             <GradCard user={user} />

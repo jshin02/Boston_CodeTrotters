@@ -11,12 +11,13 @@ const ManageSongs = props => {
   })
   const [songList, setSongList] = useState([])
   const [updateList, setUpdateList] = useState([])
+  const [songSwitch, setSongSwitch] = useState(0)
 
   useEffect(() => {
     showGrad(props.user.gradId)
       .then(res => setSongList(res.data.grad.songs))
       .catch(() => console.log('could not get gradId'))
-  }, [updateList])
+  }, [updateList, songSwitch])
   const handleChange = event => {
     event.persist()
     setNewSong(() => {
@@ -32,22 +33,26 @@ const ManageSongs = props => {
         setUpdateList(res.data.grad.songs)
         console.log('created a song', res)
       })
-      .then(() => console.log(songList))
+      .then(() => setNewSong({ title: '', artist: '' }))
       .catch(() => console.log('did not create a song'))
   }
 
   return (
     <Fragment>
-      <AddSongs newSong={newSong} handleChange={handleChange} handleSubmit={handleSubmit} />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      {songList.length < 3
+        ? <AddSongs newSong={newSong} handleChange={handleChange} handleSubmit={handleSubmit} />
+        : <h2>Playlist is full</h2>
+      }
+      <h3 style={{ marginTop: '50px' }}>Top Songs</h3>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         {songList.map((song, i) => (
           <SongCard
             key={i}
             song={song}
             gradId={props.user.gradId}
             setUpdateList={setUpdateList}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
+            songSwitch={songSwitch}
+            setSongSwitch={setSongSwitch}
           />
         ))}
       </div>
