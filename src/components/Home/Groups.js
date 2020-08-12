@@ -64,7 +64,7 @@ const Groups = props => {
     height: '30vh',
     position: 'relative',
     width: '61%',
-    margin: '0 auto'
+    margin: '20px auto'
   }
   const adviceStyle = {
     position: 'absolute',
