@@ -3,6 +3,7 @@ import AddSongs from './AddSongs'
 import { addSong } from '../../api/songs'
 import { showGrad } from '../../api/grad'
 import SongCard from './SongCard'
+import messages from '../AutoDismissAlert/messages'
 
 const ManageSongs = props => {
   const [newSong, setNewSong] = useState({
@@ -12,11 +13,16 @@ const ManageSongs = props => {
   const [songList, setSongList] = useState([])
   const [updateList, setUpdateList] = useState([])
   const [songSwitch, setSongSwitch] = useState(0)
+  const msgAlert = props.msgAlert
 
   useEffect(() => {
     showGrad(props.user.gradId)
       .then(res => setSongList(res.data.grad.songs))
-      .catch(() => console.log('could not get gradId'))
+      .catch(error => msgAlert({
+        heading: 'Profile Retrieval Failed with error: ' + error.message,
+        message: messages.gradShowFailure,
+        variant: 'danger'
+      }))
   }, [updateList, songSwitch])
   const handleChange = event => {
     event.persist()
@@ -31,10 +37,18 @@ const ManageSongs = props => {
     addSong(newSong, props.user)
       .then((res) => {
         setUpdateList(res.data.grad.songs)
-        console.log('created a song', res)
       })
       .then(() => setNewSong({ title: '', artist: '' }))
-      .catch(() => console.log('did not create a song'))
+      .then(() => msgAlert({
+        heading: 'Successfully Added Song',
+        message: messages.createSongSuccess,
+        variant: 'success'
+      }))
+      .catch(error => msgAlert({
+        heading: 'Add Song Failed with error: ' + error.message,
+        message: messages.createSongFailure,
+        variant: 'danger'
+      }))
   }
 
   return (
@@ -50,6 +64,7 @@ const ManageSongs = props => {
             key={i}
             song={song}
             gradId={props.user.gradId}
+            msgAlert={msgAlert}
             setUpdateList={setUpdateList}
             songSwitch={songSwitch}
             setSongSwitch={setSongSwitch}

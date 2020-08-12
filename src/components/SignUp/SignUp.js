@@ -32,7 +32,6 @@ class SignUp extends Component {
       .then(() => signIn(this.state))
       .then(res => {
         setUser(res.data.user)
-        console.log(res)
         return res
       })
       .then(res => {
@@ -43,7 +42,6 @@ class SignUp extends Component {
         return res
       })
       .then(res => {
-        console.log(res.data.user.name)
         history.push({
           pathname: '/grad',
           name: res.data.user.name,

@@ -6,8 +6,10 @@ import ShowSongs from '../Songs/ShowSongs'
 import { ShowLeftCard } from './ShowLeftCard'
 import { ShowRightCard } from './ShowRightCard'
 import { useSpring, animated } from 'react-spring'
+import messages from '../AutoDismissAlert/messages'
 
 const GradShow = props => {
+  const { msgAlert, obj } = props
   const [gradSongs, setGradSongs] = useState([])
   const [person, setPerson] = useState({
     id: '',
@@ -56,12 +58,16 @@ const GradShow = props => {
   }
   useEffect(() => {
     // show request for grad's songs
-    showGrad(props.match.params.id)
+    showGrad(obj.match.params.id)
       .then(res => {
         setPerson(res.data.grad)
         setGradSongs(res.data.grad.songs)
       })
-      .catch(() => console.log('this is not working.'))
+      .catch(error => msgAlert({
+        heading: 'Show request Failed with error: ' + error.message,
+        message: messages.gradShowFailure,
+        variant: 'danger'
+      }))
   }, [])
   const iconStyle = {
     height: '25px',
@@ -80,7 +86,7 @@ const GradShow = props => {
         </Col>
       </Row>
       <Row style={playlistStyle}>
-        <ShowSongs gradSongs={gradSongs} />
+        <ShowSongs msgAlert={msgAlert} gradSongs={gradSongs} />
       </Row>
     </animated.div>
   )

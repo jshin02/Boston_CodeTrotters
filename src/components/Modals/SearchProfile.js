@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { assignGrad, updateUserGrad } from '../../api/auth'
 import { updateGrad } from '../../api/grad'
 import { withRouter } from 'react-router-dom'
+import messages from '../AutoDismissAlert/messages'
 
 const SearchProfile = props => {
   const [fetchProfile, setFetchProfile] = useState({
@@ -31,14 +32,14 @@ const SearchProfile = props => {
   })
   const user = props.user
   const setUser = props.userfun
+  const msgAlert = props.msgAlert
   // const person = props.person
   // const setPerson = props.personfun
   useEffect(() => {
     // user is assigned a gradId here
-    console.log(props.location, setUser)
+    // console.log(props.location, setUser)
     assignGrad(props.location.name)
       .then(res => {
-        console.log(user._id)
         // populates container to update resource if positive match
         setPerson({ ...res.data.grad, owner: user._id })
         // Populates the modal for user/grad verification
@@ -50,19 +51,18 @@ const SearchProfile = props => {
             assignedToUser: res.data.grad.assignedToUser
           }
           const matchProfile = Object.assign({}, prevProfile, updatedField)
-          console.log(matchProfile)
           return matchProfile
         })
         return res
       })
-      .catch(() => console.log('failed to execute GET'))
+      .catch(() => console.log('failed to execute GET on effect'))
   }, [])
   // hook to update grad every time the grad's value (person) is changed.
   useEffect(() => {
+    // send person to update api request every time value of person changes.
     updateGrad(fetchProfile.gradId, person)
-      .then(() => console.log('updated grad'))
-      .catch(() => console.log('failed to update grad'))
-    // console.log(person)
+      // .then(() => console.log('updated grad'))
+      .catch(() => console.log('failed to update grad on effect'))
     // console.log(fetchProfile, props.location.user)
   }, [person])
 
@@ -75,12 +75,19 @@ const SearchProfile = props => {
       .then(res => {
         const updatedUser = Object.assign({}, props.location.user, { gradId: fetchProfile.gradId })
         // set user state at app level
-        // this should have its own .then handler
         setUser(updatedUser)
       })
       .then(() => props.history.push('/'))
-      .then(() => console.log('Updated User gradId'))
-      .catch(() => console.log('failed to update user with gradId'))
+      .then(() => msgAlert({
+        heading: 'Welcome, ' + props.location.name + '!',
+        message: messages.profileMatchSuccess,
+        variant: 'success'
+      }))
+      .catch(error => msgAlert({
+        heading: 'Profile match Failed with error: ' + error.message,
+        message: messages.profileMatchFailure,
+        variant: 'danger'
+      }))
   }
   return (
     <Modal

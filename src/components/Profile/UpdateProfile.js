@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { showGrad, updateGrad } from '../../api/grad'
 import AddGrad from '../Grads/AddGrad'
 import { withRouter } from 'react-router-dom'
+import messages from '../AutoDismissAlert/messages'
 
 const UpdateProfile = (props) => {
   const [person, setPerson] = useState({
@@ -20,14 +21,19 @@ const UpdateProfile = (props) => {
     instagram: '',
     email: ''
   })
+  const msgAlert = props.msgAlert
+
   useEffect(() => {
-    console.log(props.user)
+    // console.log(props.user)
     showGrad(props.user.gradId)
       .then(res => {
-        console.log(res)
         setPerson(res.data.grad)
       })
-      .catch(() => console.log('could not show user'))
+      .catch(error => msgAlert({
+        heading: 'Sign In Failed with error: ' + error.message,
+        message: messages.gradShowFailure,
+        variant: 'danger'
+      }))
   }, [])
   const handleChange = event => {
     // event.persist()
@@ -46,7 +52,16 @@ const UpdateProfile = (props) => {
     event.preventDefault()
     updateGrad(props.user.gradId, person)
       .then(() => props.history.push('/'))
-      .catch(() => console.log('did not update user details'))
+      .then(() => msgAlert({
+        heading: 'Update Profile Success',
+        message: messages.updateProfileSuccess,
+        variant: 'success'
+      }))
+      .catch(error => msgAlert({
+        heading: 'Update Profile Failed with error: ' + error.message,
+        message: messages.updateProfileFailure,
+        variant: 'danger'
+      }))
   }
   return (
     <div>

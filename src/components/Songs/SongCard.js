@@ -3,8 +3,9 @@ import { updateSong, deleteSong } from '../../api/songs'
 import { showGrad } from '../../api/grad'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import messages from '../AutoDismissAlert/messages'
 
-const SongCard = ({ song, gradId, setUpdateList, songSwitch, setSongSwitch }) => {
+const SongCard = ({ song, gradId, setUpdateList, songSwitch, setSongSwitch, msgAlert }) => {
   const [changeSong, setChangeSong] = useState(false)
   const [updatedSong, setUpdatedSong] = useState({
     title: '',
@@ -26,8 +27,16 @@ const SongCard = ({ song, gradId, setUpdateList, songSwitch, setSongSwitch }) =>
     deleteSong(gradId, songId)
     showGrad(gradId)
       .then(res => setUpdateList(res.data.grad.songs))
-      .then(() => console.log('deleted song - try to add animation here'))
-      .catch(() => console.log('failed to remove song.'))
+      .then(() => msgAlert({
+        heading: 'Delete Song Success',
+        message: messages.deleteSongSuccess,
+        variant: 'success'
+      }))
+      .catch(error => msgAlert({
+        heading: 'Delete Song Failed with error: ' + error.message,
+        message: messages.deleteSongFailure,
+        variant: 'danger'
+      }))
   }
   const handleChange = event => {
     event.persist()
@@ -43,7 +52,11 @@ const SongCard = ({ song, gradId, setUpdateList, songSwitch, setSongSwitch }) =>
     updateSong(gradId, updatedSong, songId)
       .then(() => setSongSwitch(songSwitch += 1))
       .then(() => setChangeSong(false))
-      .catch(() => console.log('failed to update song'))
+      .catch(error => msgAlert({
+        heading: 'Update Song Failed with error: ' + error.message,
+        message: messages.updateSongFailure,
+        variant: 'danger'
+      }))
   }
   return (
     <div>

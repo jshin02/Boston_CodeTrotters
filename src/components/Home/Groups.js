@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import Segments from './Segments'
 import { getGrads } from '../../api/grad'
+import messages from '../AutoDismissAlert/messages'
 
 const groups = [
   {
@@ -23,13 +24,18 @@ const groups = [
 // run until find one with advice.
 // store that user to display advice and link to profile.
 
-const Groups = () => {
+const Groups = props => {
   const [users, setUsers] = useState([])
   const [userAdvice, setUserAdvice] = useState({})
+  const msgAlert = props.msgAlert
   useEffect(() => {
     getGrads()
       .then(res => setUsers(res.data.grads))
-      .catch(() => console.log('failed to get grads'))
+      .catch(error => msgAlert({
+        heading: 'Sign In Failed with error: ' + error.message,
+        message: messages.gradInventoryFailure,
+        variant: 'danger'
+      }))
   }, [])
   useEffect(() => {
     const array = users
@@ -42,12 +48,10 @@ const Groups = () => {
     let element = 0
     while (element < array.length) {
       if (array[element].adviceContent) {
-        console.log(array[element])
         return setUserAdvice(array[element])
       }
       element++
     }
-    console.log(userAdvice)
   }, [users])
   const fade = useSpring({
     from: { opacity: 0 },

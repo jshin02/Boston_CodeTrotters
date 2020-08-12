@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { getGrads } from '../../api/grad'
 import GradDetails from './GradDetails'
+import messages from '../AutoDismissAlert/messages'
 
 const GradCard = props => {
   const [index, setIndex] = useState([])
+  const msgAlert = props.msgAlert
 
   useEffect(() => {
     getGrads()
       .then(res => {
-        console.log(res)
         res.data.grads.sort((a, b) => {
           const nameA = a.name
           const nameB = b.name
@@ -24,7 +25,11 @@ const GradCard = props => {
         const container = res.data.grads.filter(element => element.organization === 'CodeTrotters')
         setIndex(container)
       })
-      .catch(() => console.log('error getting index'))
+      .catch(error => msgAlert({
+        heading: 'Sign In Failed with error: ' + error.message,
+        message: messages.indexGradsFailure,
+        variant: 'danger'
+      }))
   }, [])
 
   const indexStyle = {
@@ -48,7 +53,7 @@ const GradCard = props => {
   // render grad details per each grad.
   // pass api response as props
   return (
-    <div style={{ border: '1px solid black' }}>
+    <div>
       <h2 style={{ margin: '20px 0' }}>Codetrotters</h2>
       <animated.div style={messageContainer}>
         <div>

@@ -16,7 +16,6 @@ export const addSong = (songs, user) => {
 }
 
 export const updateSong = (gradId, song, songId) => {
-  console.log('grad id', gradId, 'song', song, 'song id', songId)
   return axios({
     method: 'PATCH',
     url: apiUrl + '/grads/' + gradId + '/songs/' + songId,

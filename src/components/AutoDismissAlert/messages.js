@@ -5,5 +5,19 @@ export default {
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
-  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.'
+  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  indexGradsFailure: 'Failed to load resources. Refresh page and try again.',
+  registrationSuccess: 'Successfully created profile, find your profile in the correct organizaiton.',
+  registrationFailure: 'Error creating profile, again later.',
+  gradShowFailure: 'Failed to get profile information.',
+  gradInventoryFailure: 'Error getting inventory list of profiles.',
+  profileMatchSuccess: 'Successfully connected you to your profile.',
+  profileMatchFailure: 'Error assigning you to your profile.',
+  updateProfileSuccess: 'Successfully updated profile.',
+  updateProfileFailure: 'Failed to update profile. Verify you have all required inputs.',
+  createSongSuccess: 'Successfully added song to profile.',
+  createSongFailure: 'Failed to add song to profile.',
+  deleteSongSuccess: 'Successfully deleted song from profile.',
+  deleteSongFailure: 'Failed to delete song from profille.',
+  updateSongFailure: 'Failed to update song from profille.'
 }

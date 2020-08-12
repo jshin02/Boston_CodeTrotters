@@ -2,7 +2,6 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 export const createGrad = person => {
-  console.log(person)
   return axios({
     method: 'POST',
     url: apiUrl + '/grads',
@@ -29,7 +28,6 @@ export const showGrad = id => {
 }
 
 export const updateGrad = (id, person) => {
-  console.log('assigned?', id, person)
   return axios({
     method: 'PATCH',
     url: apiUrl + '/grads/' + person._id,

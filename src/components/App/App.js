@@ -70,25 +70,29 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} path='/update-profile' render={() => (
-            <UpdateProfile user={user} setUser={this.User} />
+            <UpdateProfile msgAlert={this.msgAlert} user={user} setUser={this.User} />
           )} />
           <AuthenticatedRoute user={user} path='/ManageSongs' render={() => (
-            <ManageSongs user={user} />
+            <ManageSongs msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} path='/grad' render={() => (
-            <Grads setUser={this.setUser} user={user} />
+            <Grads msgAlert={this.msgAlert} setUser={this.setUser} user={user} />
           )} />
           <Route user={user} path='/CodeTrottersIndex' render={() => (
-            <GradCard user={user} />
+            <GradCard msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} path='/InstructorsIndex' render={() => (
-            <InstructorCard user={user} />
+            <InstructorCard msgAlert={this.msgAlert} user={user} />
           )} />
           <Route user={user} path='/AffiliatesIndex' render={() => (
-            <AffiliateCard user={user} />
+            <AffiliateCard msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route user={user} exact path='/' component={Groups} />
-          <Route user={user} path='/grads/:id' component={GradShow} />
+          <Route user={user} exact path='/' render={() => (
+            <Groups msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route user={user} path='/grads/:id' render={(obj) => (
+            <GradShow obj={obj} msgAlert={this.msgAlert} user={user} />
+          )} />
           <Route user={user} path='/test' render={() => (
             <Test user={user} />
           )} />

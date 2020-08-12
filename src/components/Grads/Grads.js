@@ -4,6 +4,7 @@ import AddGrad from './AddGrad'
 import { createGrad } from '../../api/grad'
 import StudentCheck from '../Modals/StudentCheck'
 import SearchProfile from '../Modals/SearchProfile'
+import messages from '../AutoDismissAlert/messages'
 
 const Grads = props => {
   const [person, setPerson] = useState({
@@ -25,6 +26,7 @@ const Grads = props => {
   })
   const [modalShow, setModalShow] = useState(true)
   const [modalShow2, setModalShow2] = useState(false)
+  const msgAlert = props.msgAlert
 
   useEffect(() => {
     setPerson({ ...person, owner: props.user._id })
@@ -36,7 +38,6 @@ const Grads = props => {
   const isStudent = () => {
     setModalShow(false)
     setModalShow2(true)
-    console.log(props)
   }
 
   const handleChange = event => {
@@ -50,18 +51,24 @@ const Grads = props => {
   const handleSubmit = event => {
     event.preventDefault()
     createGrad(person)
-      // .then(res => res.status(201).json(res))
       .then(() => {
-        console.log('created person, now trying to push')
         props.history.push('/')
+        msgAlert({
+          heading: 'Registration Success',
+          message: messages.registrationSuccess,
+          variant: 'success'
+        })
       })
-      .then(() => console.log('created a person'))
-      .catch(() => console.log('did not create a person'))
+      .catch(error => msgAlert({
+        heading: 'Registration Failed with error: ' + error.message,
+        message: messages.registrationFailure,
+        variant: 'danger'
+      }))
   }
   return (
     <div>
       <StudentCheck show={modalShow} onClose={notStudent} onHide={isStudent} />
-      <SearchProfile show={modalShow2} person={person} personfun={setPerson} location={props.location} userfun={props.setUser} user={props.user} onHide={() => setModalShow2(false)} />
+      <SearchProfile msgAlert={msgAlert} show={modalShow2} person={person} personfun={setPerson} location={props.location} userfun={props.setUser} user={props.user} onHide={() => setModalShow2(false)} />
       <h2>Create Profile</h2>
       <AddGrad
         person={person}

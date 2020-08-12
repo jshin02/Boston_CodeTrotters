@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { getGrads } from '../../api/grad'
 import GradDetails from './GradDetails'
+import messages from '../AutoDismissAlert/messages'
 
 const AffiliateCard = props => {
   const [index, setIndex] = useState([])
+  const msgAlert = props.msgAlert
+
   useEffect(() => {
     getGrads()
       .then(res => {
-        console.log(res)
+        // sort response alphabetically
         res.data.grads.sort((a, b) => {
           const nameA = a.name
           const nameB = b.name
@@ -23,7 +26,11 @@ const AffiliateCard = props => {
         const container = res.data.grads.filter(element => element.organization === 'Other Affiliate')
         setIndex(container)
       })
-      .catch(() => console.log('error getting index'))
+      .catch(error => msgAlert({
+        heading: 'Sign In Failed with error: ' + error.message,
+        message: messages.indexGradsFailure,
+        variant: 'danger'
+      }))
   }, [])
 
   const indexStyle = {
