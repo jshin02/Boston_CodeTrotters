@@ -1,9 +1,10 @@
 {
   "name": "react-auth-template",
-  "homepage": "https://<jshin02>.github.io/<Boston_CodeTrotters>",
+  "homepage": "https://jshin02.github.io/Boston_CodeTrotters",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aos": "^2.3.4",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
@@ -17,7 +18,10 @@
     "react": "^16.4.2",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.4.2",
+    "react-icons": "^3.10.0",
     "react-router-dom": "^4.3.1",
+    "react-spring": "^8.0.27",
+    "reactjs-popup": "^1.5.0",
     "resolve": "1.6.0",
     "url-loader": "0.6.2"
   },

@@ -7,6 +7,7 @@ export const signUp = credentials => {
     url: apiUrl + '/sign-up',
     data: {
       credentials: {
+        name: credentials.name,
         email: credentials.email,
         password: credentials.password,
         password_confirmation: credentials.passwordConfirmation
@@ -23,6 +24,29 @@ export const signIn = credentials => {
       credentials: {
         email: credentials.email,
         password: credentials.password
+      }
+    }
+  })
+}
+
+export const assignGrad = name => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/grad/' + name
+  })
+}
+
+export const updateUserGrad = (user, gradId) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/gradid',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: {
+      person: {
+        id: user._id,
+        gradId: gradId
       }
     }
   })

@@ -1,11 +1,11 @@
 let apiUrl
 const apiUrls = {
-  production: 'https://aqueous-atoll-85096.herokuapp.com',
+  production: 'https://safe-retreat-01918.herokuapp.com',
   development: 'http://localhost:4741'
 }
 
 if (window.location.hostname === 'localhost') {
-  apiUrl = apiUrls.development
+  apiUrl = apiUrls.production
 } else {
   apiUrl = apiUrls.production
 }

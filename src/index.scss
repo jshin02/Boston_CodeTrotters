@@ -1,1 +1,165 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Font Variables */
+$pt-sans: 'PT Sans', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+/* Global StyleSheet */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h2 {
+  font-family: $roboto;
+}
+main{
+  overflow: hidden;
+}
+
+/* Header Styles: */
+header {
+  max-width: 1200px;
+  margin: 10px auto;
+}
+a.logo {
+  text-decoration: none;
+  font-family: $pt-sans;
+  font-size: 32px;
+  color: black;
+}
+a.nav-links {
+  margin-left: 20px;
+  color: black;
+}
+a.current {
+  color: rgba(128, 128, 128, .9);
+}
+//**** NavButton StyleSheet ****
+.burger-menu,
+.burger-menu.open {
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  right: 150px;
+  bottom: 100px;
+  z-index: 9999;
+  background: #fff;
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.burger-menu .bar1,
+.bar2,
+.bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.burger-menu.open .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-4px, 4px);
+  transform: rotate(-45deg) translate(-4px, 4px);
+}
+
+.burger-menu.open .bar2 {
+  opacity: 0;
+}
+
+.burger-menu.open .bar3 {
+  -webkit-transform: rotate(45deg) translate(-6px, -6px);
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Menu */
+
+.menu {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 0px;
+}
+.menu ul {
+  position: relative;
+  top: 0px;
+  font-size: 24px;
+  padding: 0px;
+  list-style-type: none;
+}
+.menu li {
+  // list-style: outside none none;
+  margin: 10px 0px;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Main StyleSheet */
+
+main {
+  padding: 3.5rem 0;
+}
+
+/* Footer Stylesheet */
+
+.footer {
+  background-color: #E0E0E0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 5;
+}
+
+/* Grad Index StyleSheet */
+.grad-col-1 {
+  margin-top: -44vh
+}
+.grad-col-2 {
+  margin-top: -22vh;
+}
+.grad-col {
+  margin-left: 20px;
+  margin-right: 20px;
+  h3 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 14px;
+  }
+  :hover{
+    // padding-bottom: 10px;
+    // box-shadow: 0 10px 12px black;
+  }
+}
+.grad-card-content {
+  padding: 5px;
+  height: 120px;
+  max-height: 100%;
+  position: relative;
+  // overflow: hidden;
+}
+.grad-card-body {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+div.grad-card-body::-webkit-scrollbar {
+  width: 6px;
+}
+div.grad-card-body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+div.grad-card-body::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
