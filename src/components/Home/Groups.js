@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSpring, animated } from 'react-spring'
+// import { useSpring, animated } from 'react-spring'
 import Segments from './Segments'
 import { getGrads } from '../../api/grad'
 import messages from '../AutoDismissAlert/messages'
@@ -53,13 +53,13 @@ const Groups = props => {
       element++
     }
   }, [users])
-  const fade = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: { mass: 2, tension: 280, friction: 180 },
-    height: '90vh',
-    delay: 300
-  })
+  // const fade = useSpring({
+  //   from: { opacity: 0 },
+  //   to: { opacity: 1 },
+  //   config: { mass: 2, tension: 280, friction: 180 },
+  //   height: '90vh',
+  //   delay: 300
+  // })
   const adviceContainer = {
     height: '30vh',
     position: 'relative',
@@ -84,8 +84,8 @@ const Groups = props => {
     alignItems: 'center'
   }
   return (
-    <animated.div style={fade}>
-      <div style={adviceContainer}>
+    <div className="groups">
+      <div className="fadeIn" style={adviceContainer}>
         <div style={adviceStyle}>
           <h3>&quot;{userAdvice.adviceContent}&quot;</h3>
           <h5 style={{ marginTop: '5vh' }}> - {userAdvice.name}</h5>
@@ -101,7 +101,7 @@ const Groups = props => {
           ))}
         </div>
       </div>
-    </animated.div>
+    </div>
   )
 }
 

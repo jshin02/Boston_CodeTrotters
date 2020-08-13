@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSpring, animated, config } from 'react-spring'
+// import { useSpring, animated, config } from 'react-spring'
 
 export const ShowLeftCard = ({ id, content, advice, endorsements }) => {
-  const slide = useSpring({
-    from: { marginLeft: -500, marginRight: 500 },
-    to: { marginLeft: 0, marginRight: 0 },
-    config: config.slow
-  })
+  // const slide = useSpring({
+  //   from: { marginLeft: -500, marginRight: 500 },
+  //   to: { marginLeft: 0, marginRight: 0 },
+  //   config: config.slow
+  // })
   return (
-    <animated.div style={slide}>
+    <div className='slideRight'>
       <div data-id={id} style={{ height: '70vh' }}>
         { content &&
         <div>
@@ -29,6 +29,6 @@ export const ShowLeftCard = ({ id, content, advice, endorsements }) => {
         </div>
         }
       </div>
-    </animated.div>
+    </div>
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import Col from 'react-bootstrap/Col'
-import { useSpring, animated, config } from 'react-spring'
+// import { useSpring, animated, config } from 'react-spring'
 
 const ShowSongs = props => {
-  const slide = useSpring({
-    from: { transform: 'translate3d(0,80%, 0)' },
-    to: { transform: 'translate3d(0,0,0)' },
-    config: config.slow
-  })
+  // const slide = useSpring({
+  //   from: { transform: 'translate3d(0,80%, 0)' },
+  //   to: { transform: 'translate3d(0,0,0)' },
+  //   config: config.slow
+  // })
   const songStyle = {
     width: '100%',
     display: 'flex',
@@ -17,7 +17,7 @@ const ShowSongs = props => {
   }
   return (
     <Col sm={12}>
-      <animated.div style={slide}>
+      <div className="slideUp">
         <div style={{ border: '1px solid rgba(190,199,192,.8)', width: '100%' }}>
           <h3 style={{ textAlign: 'center' }}>Top Music To Code To</h3>
           <div style={songStyle}>
@@ -29,7 +29,7 @@ const ShowSongs = props => {
             ))}
           </div>
         </div>
-      </animated.div>
+      </div>
     </Col>
   )
 }

@@ -25,6 +25,7 @@ const SongCard = ({ song, gradId, setUpdateList, songSwitch, setSongSwitch, msgA
     event.preventDefault()
     const songId = song._id
     deleteSong(gradId, songId)
+      .then(res => console.log(res))
     showGrad(gradId)
       .then(res => setUpdateList(res.data.grad.songs))
       .then(() => msgAlert({
