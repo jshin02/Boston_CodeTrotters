@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import About from '../About/About'
 import Footer from '../Footer/Footer'
 import BurgerIcon from '../Header/BurgerIcon'
 import Menu from '../Header/Menu'
@@ -62,6 +63,9 @@ class App extends Component {
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route path='/about' render={() => (
+            <About />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />

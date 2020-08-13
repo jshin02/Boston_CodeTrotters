@@ -22,7 +22,7 @@ const Test = props => {
 
   return (
     <div>
-      <h2>hello</h2>
+      <h2>Hello</h2>
       <h3>{props.user.name}</h3>
     </div>
   )

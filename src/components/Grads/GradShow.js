@@ -5,7 +5,7 @@ import { showGrad } from '../../api/grad'
 import ShowSongs from '../Songs/ShowSongs'
 import { ShowLeftCard } from './ShowLeftCard'
 import { ShowRightCard } from './ShowRightCard'
-import { useSpring, animated } from 'react-spring'
+// import { useSpring, animated } from 'react-spring'
 import messages from '../AutoDismissAlert/messages'
 
 const GradShow = props => {
@@ -28,11 +28,11 @@ const GradShow = props => {
     instagram: '',
     email: ''
   })
-  const fade = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: { mass: 1, tension: 280, friction: 180 }
-  })
+  // const fade = useSpring({
+  //   from: { opacity: 0 },
+  //   to: { opacity: 1 },
+  //   config: { mass: 1, tension: 280, friction: 180 }
+  // })
   const { name, identity, compliment, interests, imageUrl, adviceContent, messageContent, endorsements, linkedin, github, instagram, email, id } = person
   // in personal message section, only reveal Personal message if the title and content exist - only reveal endoresement requests if those have been filled in.
   const postcardStyle = {
@@ -76,7 +76,7 @@ const GradShow = props => {
   }
 
   return (
-    <animated.div style={fade}>
+    <div className="fadeIn">
       <Row style={postcardStyle}>
         <Col md={6} style={{ height: 'inherit', marginTop: '7px' }}>
           <ShowLeftCard content={messageContent} advice={adviceContent} endorsements={endorsements} id={id} />
@@ -88,7 +88,7 @@ const GradShow = props => {
       <Row style={playlistStyle}>
         <ShowSongs msgAlert={msgAlert} gradSongs={gradSongs} />
       </Row>
-    </animated.div>
+    </div>
   )
 }
 
